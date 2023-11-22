@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Registro</title>
+</head>
+<body>
+    <div class="pt-16 h-screen flex max-w-7xl mx-auto justify-center items-center px-4">
+        <div class="hidden">
+            <img src="/images/signup.svg" alt="imagen para registro">
+        </div>
+        <form class="flex flex-col gap-4 bg-zinc-200 p-4 rounded-lg text-lg shadow-lg">
+            <div class="flex flex-col gap-2">
+                <label for="name-input" class="font-bold">Nombre <span class="text-red-500">*</span></label>
+                <input 
+                type="text" 
+                id="name-input" 
+                name="name-input" 
+                autocomplete="off" 
+                placeholder="Carlos Sanchez"
+                class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700">
+                <p class="text-sm text-zinc-800">Tanto el nombre como el apellido deben comenzar con mayusculas.</p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
