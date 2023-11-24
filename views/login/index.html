@@ -13,18 +13,6 @@
             <img class="w-3/4" src="/images/signup.svg" alt="imagen para registro">
         </div>
         <form id="form" class="flex flex-col gap-4 bg-zinc-200 p-4 rounded-lg text-md shadow-lg lg:w-2/4">
-            <!-- nombre -->
-            <div class="flex flex-col gap-2">
-                <label for="name-input" class="font-bold">Nombre <span class="text-red-500">*</span></label>
-                <input 
-                type="text" 
-                id="name-input" 
-                name="name-input" 
-                autocomplete="off" 
-                placeholder="Carlos Sanchez"
-                class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700">
-                <p class="text-xs text-zinc-800">Tanto el nombre como el apellido deben comenzar con mayusculas.</p>
-            </div>
             <!-- correo -->
             <div class="flex flex-col gap-2">
                 <label for="name-input" class="font-bold">Correo <span class="text-red-500">*</span></label>
@@ -33,9 +21,8 @@
                 id="email-input" 
                 name="email-input" 
                 autocomplete="off" 
-                placeholder="ejemplo@correo.com"
                 class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700">
-                <p class="text-xs text-zinc-800">El correo es requerido.</p>
+                
             </div>
             <!-- contraseña -->
             <div class="flex flex-col gap-2">
@@ -46,32 +33,19 @@
                 name="password-input" 
                 autocomplete="off" 
                 class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700">
-                <p class="text-xs text-zinc-800">Debe tener al menos 1 letra <br> Debe tener al menos 1 numero<br>
-                Debe tener al menos 8 caracteres</p>
-            </div>
-            <!-- confirmar contraseña -->
-            <div class="flex flex-col gap-2">
-                <label for="name-input" class="font-bold"> Confirmar contraseña <span class="text-red-500">*</span></label>
-                <input 
-                type="password" 
-                id="match-input" 
-                name="match-input" 
-                autocomplete="off" 
-                class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700">
-                <p class="text-xs text-zinc-800">Debe coincidir con la contraseña</p>
+                <p id="error-text" class="text-xs text-zinc-800"></p>
             </div>
             <!-- botones -->
             <button 
             id="form-btn"
-            disabled
             class="bg-indigo-700 rounded-lg py-2 px-4 font-bold text-white transition ease-in-out hover:bg-indigo-800 text-center disabled:opacity-50 cursor-not-allowed">
-            Registrar
+            Iniciar sesion
             </button>
 
         </form>
     </div>
     <script src="/components/nav.js"></script>
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
 
 </body>
 </html>
