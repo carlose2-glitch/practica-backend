@@ -1,9 +1,12 @@
+import { createNotification } from '../components/notification.js';
+
 const form = document.querySelector('#form');
 const nameInput = document.querySelector('#name-input');
 const emailInput = document.querySelector('#email-input');
 const passwordInput = document.querySelector('#password-input');
 const matchInput = document.querySelector('#match-input');
 const formBtn = document.querySelector('#form-btn');
+const notification = document.querySelector('#notification');
 //console.log(axios);
 
 // Regex validations
@@ -81,12 +84,13 @@ form.addEventListener('submit', async e => {
     console.log(response);
 
   } catch (error) {
-    console.log(error);
-
+    createNotification(true, error.response.data.error);
+    setTimeout(()=>{
+      notification.innerHTML = '';
+    },5000)
+    
+    //console.log(error.response.data.error);
   }
-
-
-
 });
 
 
