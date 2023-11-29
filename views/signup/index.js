@@ -80,8 +80,22 @@ form.addEventListener('submit', async e => {
       email: emailInput.value,
       password: passwordInput.value,
     };
-    const response = await axios.post('/api/users', newUser);
-    console.log(response);
+    const {data} = await axios.post('/api/users', newUser);
+    
+    createNotification(false, data);
+    setTimeout(()=>{
+      notification.innerHTML = '';
+    },5000)
+    
+    nameInput.value = '';
+    emailInput.value = '';
+    passwordInput.value = '';
+    matchInput.value = '';
+
+ validation(nameInput, false);
+ validation(emailInput, false);
+ validation(passwordInput, false);
+ validation(matchInput, false);
 
   } catch (error) {
     createNotification(true, error.response.data.error);

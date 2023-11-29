@@ -7,7 +7,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const usersRouter = require('./controllers/users');
+const { PAGE_URL } = require('./config');
 
+console.log(PAGE_URL);
 
 (async() => {
   try {
@@ -35,5 +37,6 @@ app.use(morgan('tiny'));
 
 //Rutas backend
 app.use('/api/users', usersRouter);
+
 
 module.exports = app;
