@@ -9,6 +9,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  todos: [{
+    type:mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }]
+
 
 });
 
