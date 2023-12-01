@@ -34,6 +34,7 @@ app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/images', express.static(path.resolve('img')));
 app.use('/login', express.static(path.resolve('views', 'login')));
 app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
+app.use('/todos', express.static(path.resolve('views', 'todos')));
 
 
 app.use(morgan('tiny'));
