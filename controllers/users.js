@@ -49,11 +49,58 @@ usersRouter.post('/', async (request, response) => {
     from: process.env.EMAIL_USER, // sender address
     to: saveUser.email, // list of receivers
     subject: 'Verificacion de usuario', // Subject line
-    html: `<a href="${PAGE_URL}/verify/${token}}">Verificar correos</a>`, // html body
+    html: `<a href="${PAGE_URL}/verify/${saveUser.id}/${token}">Verificar correos</a>`, // html body
   });
 
   return response.status(201).json('Usuario creado, Por favor verifica tu correo');
 
+});
+
+usersRouter.patch('/:id/:token', async (request, response) => {
+
+  try {
+    const token = request.params.token;
+    // const id = request.params.id;
+    //console.log(id);
+    //console.log(token);
+    const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    const id = decodedToken.id;
+    await User.findByIdAndUpdate(id, { verified: true });
+    return response.sendStatus(200);
+
+  } catch (error) {
+    //encontrar el usuario
+    const id = request.params.id;
+    const { email } = await User.findById(id);
+    //firmar el nuevo token
+    const token = jwt.sign({ id: id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' } );
+
+    //enviar el email
+
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER, // sender address
+      to: email, // list of receivers
+      subject: 'Verificacion de usuario', // Subject line
+      html: `<a href="${PAGE_URL}/verify/${id}/${token}}">Verificar correos</a>`, // html body
+    });
+
+
+
+
+    return response.status(400).json({ error: 'El link ya expiro, se ha enviado un nuevo link de verificacion' });
+  }
 });
 
 module.exports = usersRouter;

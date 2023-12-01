@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Registro</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Login</title>
 </head>
 <body class="bg-zinc-50">
     <nav id="navbar" class="fixed top-0 right-0 left-0 bg-indigo-700 h-16"></nav>
@@ -12,7 +13,7 @@
         <div class="hidden lg:flex w-2/4 justify-center items-center">
             <img class="w-3/4" src="/images/signup.svg" alt="imagen para registro">
         </div>
-        <form id="form" class="flex flex-col gap-4 bg-zinc-200 p-4 rounded-lg text-md shadow-lg lg:w-2/4">
+        <form id="form" class="flex flex-col gap-4 bg-zinc-200 p-4 rounded-lg text-md shadow-lg w-full md:w-9/12 lg:w-2/4">
             <!-- correo -->
             <div class="flex flex-col gap-2">
                 <label for="name-input" class="font-bold">Correo <span class="text-red-500">*</span></label>
@@ -33,19 +34,19 @@
                 name="password-input" 
                 autocomplete="off" 
                 class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700">
-                <p id="error-text" class="text-xs text-zinc-800"></p>
+                <p id="error-text" class="text-sm text-red-600"></p>
             </div>
             <!-- botones -->
             <button 
             id="form-btn"
-            class="bg-indigo-700 rounded-lg py-2 px-4 font-bold text-white transition ease-in-out hover:bg-indigo-800 text-center disabled:opacity-50 cursor-not-allowed">
+            class="bg-indigo-700 rounded-lg py-2 px-4 font-bold text-white transition ease-in-out hover:bg-indigo-800 text-center disabled:opacity-50 disabled:cursor-not-allowed">
             Iniciar sesion
             </button>
 
         </form>
     </div>
     <script src="/components/nav.js"></script>
-    <!-- <script src="index.js"></script> -->
+    <script src="index.js"></script>
 
 </body>
 </html>

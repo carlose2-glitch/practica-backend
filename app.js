@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const usersRouter = require('./controllers/users');
 const { PAGE_URL } = require('./config');
+const loginRouter = require('./controllers/login');
 
 console.log(PAGE_URL);
 
@@ -32,12 +33,14 @@ app.use('/signup', express.static(path.resolve('views', 'signup')));
 app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/images', express.static(path.resolve('img')));
 app.use('/login', express.static(path.resolve('views', 'login')));
-app.use('/verify/:token', express.static(path.resolve('views', 'verify')));
+app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
+
 
 app.use(morgan('tiny'));
 
 //Rutas backend
 app.use('/api/users', usersRouter);
+app.use('/api/login', loginRouter);
 
 
 module.exports = app;

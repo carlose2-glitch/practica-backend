@@ -1,7 +1,21 @@
-const axios = require('axios');
+const textInfo = document.querySelector('#text-info');
 
 ( async() => {
-  const token = window.location.pathname.split('/')[2];
-  const { data }  = await axios.patch('/api/users', token);
-  console.log(data);
+
+
+  try {
+
+    const token = window.location.pathname.split('/')[3];
+    const id =  window.location.pathname.split('/')[2];
+    //console.log(token);
+    //console.log(id);
+
+    await axios.patch(`/api/users/${id}/${token}`, token);
+    window.location.pathname = '/login/';
+
+  } catch (error) {
+    textInfo.innerHTML = error.response.data.error;
+    // console.log(error.response.data.error);
+  }
+
 })();
