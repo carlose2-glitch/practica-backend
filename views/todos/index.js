@@ -7,6 +7,15 @@ const totalCountSpan = document.querySelector('.total-count');
 const completedCountSpan = document.querySelector('.completed-count');
 const incompletedCountSpan = document.querySelector('.incompleted-count');
 
+
+
+(async() => {
+
+  const { data } = await axios.get('/api/todos');
+
+})();
+
+
 const totalCount = () => {
   const howMany = document.querySelector('ul').children.length;
   totalCountSpan.innerHTML = howMany;
@@ -103,13 +112,3 @@ ul.addEventListener('click', e => {
     localStorage.setItem('todoList', ul.innerHTML);
   }
 });
-
-// Load localstorage in a Self invoked function
-(() => {
-  if (localStorage.getItem('todoList')) {
-    ul.innerHTML = localStorage.getItem('todoList');
-    todoCount();
-  } else {
-    todoCount();
-  }
-})();

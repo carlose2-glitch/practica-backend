@@ -9,6 +9,8 @@ const morgan = require('morgan');
 const usersRouter = require('./controllers/users');
 const { PAGE_URL } = require('./config');
 const loginRouter = require('./controllers/login');
+const { userExtractor } = require('./middleware/auth');
+const todosRouter = require('./controllers/todos');
 
 console.log(PAGE_URL);
 
@@ -42,6 +44,7 @@ app.use(morgan('tiny'));
 //Rutas backend
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/todos', userExtractor, todosRouter );
 
 
 module.exports = app;
